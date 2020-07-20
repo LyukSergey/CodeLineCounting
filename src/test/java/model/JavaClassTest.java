@@ -11,7 +11,7 @@ class JavaClassTest {
         //GIVEN
         String name = "Test.java";
         long lineCount = 13L;
-        String expectedString = name + " " + lineCount + " ";
+        String expectedString = name + " : " + lineCount + " ";
         JavaClass javaClass = new JavaClass(name, lineCount);
 
         //WHEN

@@ -18,7 +18,11 @@ public class FolderTreeReader {
     }
 
     public String getStructureAsString(String path) {
-        Folder root = createFolderTree(new File(path), 0, null);
+        File source = new File(path);
+        if(source.isFile()){
+            return new JavaClass(source.getName(), javaClassReader.contNoCommentedLines(source)).toString();
+        }
+        Folder root = createFolderTree(source, 0, null);
         return printFolderTree(root, root, "");
     }
 

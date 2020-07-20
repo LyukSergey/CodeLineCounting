@@ -12,19 +12,40 @@ import reader.folder.FolderTreeReader;
 class FolderTreeReaderTest {
 
     @Test
-    void read() {
-        /*File file = new File(
-                getClass().getClassLoader().getResource("a").getFile()
-        ); */
-
-        File file = new File(
-                "/Users/sergijluk/Documents/mangosoft/nogodi_services/nqd-peer-to-peer-transfer/src/main/java/sa/com/nogodi/p2ptransferservice"
-//               "/Users/sergijluk/Documents/ home/java_pojects/algorithm/src/main/java/com/liuk/algorithm/extension"
-//                "/Users/sergijluk/Documents/ home/java_pojects/algorithm/src/main/java/com/liuk/algorithm/threds"
-        );
+    public void getStructureAsString_for_file() {
+        //GIVEN
+        String rootFolder = "folderTreeReaderTest/a/JavaClass.java";
         JavaClassReader javaClassReader = new JavaClassReader();
         FolderTreeReader folderTreeReader = new FolderTreeReader(javaClassReader);
-        System.out.println(folderTreeReader.getStructureAsString(file.getAbsolutePath()));
+        File file = new File(getClass().getClassLoader().getResource(rootFolder).getFile());
+        JavaClass javaClass = new JavaClass(file.getName(), javaClassReader.contNoCommentedLines(file));
+
+        //WHEN
+        String structureAsString = folderTreeReader.getStructureAsString(file.getAbsolutePath());
+
+        //THEN
+        assertThat(structureAsString).isEqualTo(javaClass.toString());
+    }
+
+    @Test
+    public void getStructureAsString_for_folder() {
+        //GIVEN
+        JavaClassReader javaClassReader = new JavaClassReader();
+        FolderTreeReader folderTreeReader = new FolderTreeReader(javaClassReader);
+        File rootFolder = new File(getClass().getClassLoader().getResource("folderTreeReaderTest/a").getFile());
+        File rootFolderWithFile  = new File(getClass().getClassLoader().getResource( "folderTreeReaderTest/a/JavaClass.java").getFile());
+
+        JavaClass javaClass = new JavaClass(rootFolderWithFile.getName(), javaClassReader.contNoCommentedLines(rootFolderWithFile));
+
+        Folder folder = new Folder();
+        folder.setName("a");
+        folder.setJavaClasses(List.of(javaClass));
+
+        //WHEN
+        String structureAsString = folderTreeReader.getStructureAsString(rootFolder.getAbsolutePath());
+
+        //THEN
+        assertThat(structureAsString).isEqualTo(folder.toString());
     }
 
     @Test
