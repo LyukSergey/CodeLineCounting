@@ -17,7 +17,8 @@ java -jar [JAR-NAME]
 you will be able to type absolute path to folder or file in the console.
 
 with this command counting-code-line application shows you:
-1) If a single file is provided as an input, the result has to be in the form of: "<filename> : <number of lines>". E.g. "App.java : 42"
+1) If a single file is provided as an input, the result has to be in the form of: filename : number of lines. 
+E.g. "App.java : 42"
 2) If a directory name is provided as an input result should include aggregated values as well, e.g. 
 
 root : 331
