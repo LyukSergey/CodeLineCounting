@@ -14,7 +14,7 @@ or if you run app without arguments:
 mvn clean install
 java -jar [JAR-NAME]
 ```
-you will be able to type absolute path to folder ot file in the console.
+you will be able to type absolute path to folder or file in the console.
 
 with this command counting-code-line application shows you:
 1) If a single file is provided as an input, the result has to be in the form of: "<filename> : <number of lines>". E.g. "App.java : 42"
