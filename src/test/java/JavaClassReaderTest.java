@@ -15,7 +15,7 @@ class JavaClassReaderTest {
         File file = new File(getClass().getClassLoader().getResource("clazzReaderTest/a/b/c/TestPathologicalComment.java").getFile());
 
         //WHEN
-        long countCommentedLines = javaClassReader.contNoCommentedLines(file);
+        long countCommentedLines = javaClassReader.countNoCommentedLines(file);
 
         //THEN
         assertThat(countCommentedLines).isEqualTo(5);
@@ -28,7 +28,7 @@ class JavaClassReaderTest {
         File file = new File(getClass().getClassLoader().getResource("clazzReaderTest/a/b/c/SimpleComments.java").getFile());
 
         //WHEN
-        long countCommentedLines = javaClassReader.contNoCommentedLines(file);
+        long countCommentedLines = javaClassReader.countNoCommentedLines(file);
 
         //THEN
         assertThat(countCommentedLines).isEqualTo(3);
@@ -42,7 +42,7 @@ class JavaClassReaderTest {
         File file = new File(getClass().getClassLoader().getResource("clazzReaderTest/a/b/c").getFile());
 
         //WHEN
-        Throwable thrown = catchThrowable(() -> javaClassReader.contNoCommentedLines(file));
+        Throwable thrown = catchThrowable(() -> javaClassReader.countNoCommentedLines(file));
 
         //THEN
         assertThat(thrown).isInstanceOf(NotCorrectArgumentException.class).hasMessageContaining(String.format(errorMessage, file.getName()));

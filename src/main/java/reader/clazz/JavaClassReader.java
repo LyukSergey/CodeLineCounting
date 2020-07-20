@@ -15,7 +15,7 @@ public class JavaClassReader {
     private static final String END_MULTI_LINE_COMMENT = "*/";
     private static final String LINE_COMMENT = "//";
 
-    public long contNoCommentedLines(File file) {
+    public long countNoCommentedLines(File file) {
         if (!file.isFile()) {
             String errorMessage = "[%s] is not a file.";
             throw new NotCorrectArgumentException(String.format(errorMessage, file.getName()));

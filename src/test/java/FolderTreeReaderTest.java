@@ -18,7 +18,7 @@ class FolderTreeReaderTest {
         JavaClassReader javaClassReader = new JavaClassReader();
         FolderTreeReader folderTreeReader = new FolderTreeReader(javaClassReader);
         File file = new File(getClass().getClassLoader().getResource(rootFolder).getFile());
-        JavaClass javaClass = new JavaClass(file.getName(), javaClassReader.contNoCommentedLines(file));
+        JavaClass javaClass = new JavaClass(file.getName(), javaClassReader.countNoCommentedLines(file));
 
         //WHEN
         String structureAsString = folderTreeReader.getStructureAsString(file.getAbsolutePath());
@@ -35,7 +35,7 @@ class FolderTreeReaderTest {
         File rootFolder = new File(getClass().getClassLoader().getResource("folderTreeReaderTest/a").getFile());
         File rootFolderWithFile  = new File(getClass().getClassLoader().getResource( "folderTreeReaderTest/a/JavaClass.java").getFile());
 
-        JavaClass javaClass = new JavaClass(rootFolderWithFile.getName(), javaClassReader.contNoCommentedLines(rootFolderWithFile));
+        JavaClass javaClass = new JavaClass(rootFolderWithFile.getName(), javaClassReader.countNoCommentedLines(rootFolderWithFile));
 
         Folder folder = new Folder();
         folder.setName("a");

@@ -1,6 +1,6 @@
 # counting-code-line
 
-Shows folder structure with count of no commented lines in Java classes.
+Shows folder structure with count of no commented lines in Java classes. Files with not .java extension will be skipped. 
 
 ## to work locally:
 run command below in the terminal:
